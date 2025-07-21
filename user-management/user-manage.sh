@@ -24,7 +24,7 @@ modify_user(){
     # Here id $username will give all the relevant info for the user
     # uid=1001(someuser) gid=1001(someuser) groups=1001(someuser)
     # We are suppressing the stdout and stderr by redirecting to /dev/null
-    if id "$username" $>/dev/null; then
+    if id "$username" &>/dev/null; then
         echo "User exists!"
         echo "1. Change shell"
         echo "2. Rename user"
