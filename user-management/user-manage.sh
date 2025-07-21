@@ -36,10 +36,10 @@ modify_user(){
         elif [[ $ch == "2" ]]; then
            echo "Renaming the user"
            read -rp "Enter new username" new_user_name
+           usermod -d "/home/${new_user_name}" -m "${username}" && echo "Home directory has been renamed successfully"
+        #    This will create a new home directory for new_user_name and copy the contents from old homedir to new one. Also the old home directory will be deleted
            usermod -l "${new_user_name}" "${username}"  && echo "Username has been renamed successfully"
         #    https://www.serverlab.ca/tutorials/linux/administration-linux/how-to-rename-linux-users-and-their-home-directory/
-           usermod -d "/home/${new_user_name}" -m username
-        #    This will create a new home directory for new_user_name and copy the contents from old homedir to new one
            groupmod -n "${new_user_name}" "${username}"
            echo "Renaming has been done"
         else
