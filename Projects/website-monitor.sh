@@ -5,7 +5,13 @@ LOG_DIR="${HOME}/website_monitor"
 mkdir -p "${LOG_DIR}"
 
 TODAY=$(date +"%Y:%m:%d")
+timestamp=$(date +"%H:%M:%S")
+
+# Here I was trying to experiment with crontab
+# LOG_FILE="$LOG_DIR/website_monitor_${TODAY}_${timestamp}.log"
 LOG_FILE="$LOG_DIR/website_monitor_${TODAY}.log"
+
+
 
 RESPONSE=$(curl -s -o /dev/null -A "Mozilla/5.0" -w "%{http_code} %{time_total}" "${WEBSITE_URL}")
 
